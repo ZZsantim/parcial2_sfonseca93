@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="620" viewBox="0 0 1120 620" role="img" aria-labelledby="title desc">
+  <title id="title">C4 nivel 1: contexto de la Plataforma de Inscripción Académica</title>
+  <desc id="desc">Estudiante y personal académico usan la PIA. La PIA consulta prerrequisitos y sincroniza inscripciones con el sistema académico legado.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #172033; }
+      .title { font-size: 25px; font-weight: 700; }
+      .subtitle { font-size: 14px; fill: #475569; }
+      .box-title { font-size: 18px; font-weight: 700; }
+      .body { font-size: 14px; }
+      .small { font-size: 12px; fill: #475569; }
+      .person { fill: #fff7ed; stroke: #c2410c; stroke-width: 2; }
+      .system { fill: #dbeafe; stroke: #1d4ed8; stroke-width: 3; }
+      .external { fill: #f1f5f9; stroke: #475569; stroke-width: 2; }
+      .line { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .line-both { stroke: #334155; stroke-width: 2; fill: none; marker-start: url(#arrow); marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1120" height="620" fill="#ffffff"/>
+  <text x="40" y="48" class="title">C4 · Nivel 1 — Contexto de la PIA</text>
+  <text x="40" y="75" class="subtitle">Sistema de interés, usuarios y sistema académico externo</text>
+
+  <rect x="65" y="180" width="230" height="120" rx="12" class="person"/>
+  <text x="180" y="218" text-anchor="middle" class="box-title">Estudiante</text>
+  <text x="180" y="246" text-anchor="middle" class="body">Consulta oferta, solicita</text>
+  <text x="180" y="267" text-anchor="middle" class="body">inscripción o cancelación</text>
+
+  <rect x="65" y="385" width="230" height="120" rx="12" class="person"/>
+  <text x="180" y="423" text-anchor="middle" class="box-title">Personal académico</text>
+  <text x="180" y="451" text-anchor="middle" class="body">Administra oferta y supervisa</text>
+  <text x="180" y="472" text-anchor="middle" class="body">el estado de matrícula</text>
+
+  <rect x="425" y="245" width="300" height="155" rx="14" class="system"/>
+  <text x="575" y="285" text-anchor="middle" class="box-title">PIA</text>
+  <text x="575" y="315" text-anchor="middle" class="body">Plataforma de Inscripción</text>
+  <text x="575" y="337" text-anchor="middle" class="body">Académica</text>
+  <text x="575" y="372" text-anchor="middle" class="small">Gestiona inscripciones del período</text>
+
+  <rect x="835" y="245" width="235" height="155" rx="12" class="external"/>
+  <text x="952" y="285" text-anchor="middle" class="box-title">Sistema académico</text>
+  <text x="952" y="309" text-anchor="middle" class="box-title">legado</text>
+  <text x="952" y="345" text-anchor="middle" class="body">Fuente oficial de historial</text>
+  <text x="952" y="367" text-anchor="middle" class="body">y prerrequisitos</text>
+
+  <path d="M295 235 C345 235 370 275 425 285" class="line"/>
+  <text x="355" y="225" text-anchor="middle" class="small">HTTPS · consultar / solicitar</text>
+  <path d="M295 445 C350 445 372 383 425 365" class="line"/>
+  <text x="350" y="430" text-anchor="middle" class="small">HTTPS · gestionar oferta</text>
+  <path d="M725 300 L835 300" class="line-both"/>
+  <text x="780" y="278" text-anchor="middle" class="small">Validar prerrequisitos</text>
+  <text x="780" y="329" text-anchor="middle" class="small">Sincronizar inscripciones</text>
+
+  <rect x="65" y="550" width="1005" height="38" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="82" y="574" class="small">La integración usa el protocolo que soporte el legado; API, proveedor de identidad y mecanismo de sincronización deben confirmarse con la universidad.</text>
+</svg>

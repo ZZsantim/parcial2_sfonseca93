@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="720" viewBox="0 0 1240 720" role="img" aria-labelledby="title desc">
+  <title id="title">C4 nivel 2: contenedores de la Plataforma de Inscripción Académica</title>
+  <desc id="desc">Navegador web accede a la aplicación PIA a través de un punto de entrada institucional. La aplicación usa PostgreSQL y se integra con el sistema legado.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #172033; }
+      .title { font-size: 25px; font-weight: 700; }
+      .subtitle { font-size: 14px; fill: #475569; }
+      .box-title { font-size: 17px; font-weight: 700; }
+      .body { font-size: 13px; }
+      .small { font-size: 11px; fill: #475569; }
+      .person { fill: #fff7ed; stroke: #c2410c; stroke-width: 2; }
+      .app { fill: #dbeafe; stroke: #1d4ed8; stroke-width: 2.5; }
+      .db { fill: #dcfce7; stroke: #15803d; stroke-width: 2; }
+      .external { fill: #f1f5f9; stroke: #475569; stroke-width: 2; }
+      .infra { fill: #f8fafc; stroke: #64748b; stroke-width: 1.5; stroke-dasharray: 7 5; }
+      .line { stroke: #334155; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+      .line-both { stroke: #334155; stroke-width: 2; fill: none; marker-start: url(#arrow); marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1240" height="720" fill="#ffffff"/>
+  <text x="38" y="45" class="title">C4 · Nivel 2 — Contenedores de la PIA</text>
+  <text x="38" y="70" class="subtitle">Despliegue propuesto sobre infraestructura institucional Linux y PostgreSQL</text>
+
+  <rect x="55" y="265" width="190" height="115" rx="12" class="person"/>
+  <text x="150" y="302" text-anchor="middle" class="box-title">Estudiante /</text>
+  <text x="150" y="324" text-anchor="middle" class="box-title">personal académico</text>
+  <text x="150" y="354" text-anchor="middle" class="body">Navegador web</text>
+
+  <rect x="305" y="190" width="220" height="260" rx="14" class="infra"/>
+  <text x="415" y="220" text-anchor="middle" class="box-title">Infraestructura</text>
+  <text x="415" y="241" text-anchor="middle" class="box-title">institucional</text>
+  <rect x="330" y="280" width="170" height="105" rx="10" fill="#ffffff" stroke="#64748b" stroke-width="2"/>
+  <text x="415" y="316" text-anchor="middle" class="box-title">Punto de entrada</text>
+  <text x="415" y="341" text-anchor="middle" class="body">Proxy / balanceador</text>
+  <text x="415" y="363" text-anchor="middle" class="small">Sin estado de negocio</text>
+
+  <rect x="585" y="135" width="340" height="375" rx="15" fill="#eff6ff" stroke="#1d4ed8" stroke-width="2"/>
+  <text x="755" y="168" text-anchor="middle" class="box-title">Aplicación PIA · Linux</text>
+  <rect x="615" y="195" width="280" height="115" rx="9" class="app"/>
+  <text x="755" y="226" text-anchor="middle" class="box-title">API y aplicación web</text>
+  <text x="755" y="251" text-anchor="middle" class="body">Oferta · reglas · inscripción</text>
+  <text x="755" y="273" text-anchor="middle" class="body">auditoría · estados</text>
+  <rect x="615" y="350" width="280" height="115" rx="9" class="app"/>
+  <text x="755" y="381" text-anchor="middle" class="box-title">Trabajador de sincronización</text>
+  <text x="755" y="406" text-anchor="middle" class="body">Reclama outbox y entrega eventos</text>
+  <text x="755" y="428" text-anchor="middle" class="body">Reintenta y concilia resultados</text>
+
+  <rect x="1000" y="185" width="205" height="160" rx="12" class="db"/>
+  <text x="1102" y="222" text-anchor="middle" class="box-title">PostgreSQL</text>
+  <text x="1102" y="252" text-anchor="middle" class="body">Inscripciones y cupos</text>
+  <text x="1102" y="274" text-anchor="middle" class="body">Idempotencia y auditoría</text>
+  <text x="1102" y="296" text-anchor="middle" class="body">Outbox transaccional</text>
+  <text x="1102" y="323" text-anchor="middle" class="small">Persistencia institucional</text>
+
+  <rect x="1000" y="420" width="205" height="135" rx="12" class="external"/>
+  <text x="1102" y="457" text-anchor="middle" class="box-title">Sistema académico</text>
+  <text x="1102" y="479" text-anchor="middle" class="box-title">legado</text>
+  <text x="1102" y="510" text-anchor="middle" class="body">Historial / prerrequisitos</text>
+  <text x="1102" y="532" text-anchor="middle" class="small">Protocolo por confirmar</text>
+
+  <path d="M245 322 L330 322" class="line-both"/>
+  <text x="287" y="303" text-anchor="middle" class="small">HTTPS</text>
+  <path d="M500 322 L615 252" class="line-both"/>
+  <text x="553" y="270" text-anchor="middle" class="small">HTTPS</text>
+  <path d="M895 240 C950 240 950 265 1000 265" class="line-both"/>
+  <text x="946" y="222" text-anchor="middle" class="small">SQL / ACID</text>
+  <path d="M895 407 C955 407 945 305 1000 305" class="line-both"/>
+  <text x="947" y="385" text-anchor="middle" class="small">Outbox</text>
+  <path d="M895 422 C945 422 955 480 1000 480" class="line-both"/>
+  <text x="946" y="457" text-anchor="middle" class="small">Adaptador legado</text>
+  <path d="M1000 460 C960 460 955 286 895 286" class="line"/>
+  <text x="944" y="348" text-anchor="middle" class="small">Prerrequisitos</text>
+
+  <rect x="55" y="610" width="1150" height="55" rx="7" fill="#f8fafc" stroke="#cbd5e1"/>
+  <text x="72" y="634" class="body">La aplicación puede tener varias instancias sin estado local de negocio. No se presupone broker ni servicio comercial:</text>
+  <text x="72" y="653" class="body">PostgreSQL coordina las transacciones y el trabajador usa el outbox persistido para reintentar sincronizaciones.</text>
+</svg>

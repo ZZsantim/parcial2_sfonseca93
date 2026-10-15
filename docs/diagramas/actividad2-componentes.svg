@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1380" height="850" viewBox="0 0 1380 850" role="img" aria-labelledby="title desc">
+  <title id="title">C4 nivel 3: componentes del módulo de inscripción y control de cupos</title>
+  <desc id="desc">Componentes de API, aplicación, dominio, adaptadores al legado y PostgreSQL; una transacción protege idempotencia, cupo, inscripción, auditoría y outbox.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#334155"/>
+    </marker>
+    <style>
+      text { font-family: Arial, Helvetica, sans-serif; fill: #172033; }
+      .title { font-size: 24px; font-weight: 700; }
+      .subtitle { font-size: 13px; fill: #475569; }
+      .section { font-size: 15px; font-weight: 700; fill: #1e3a8a; }
+      .box-title { font-size: 14px; font-weight: 700; }
+      .body { font-size: 12px; }
+      .small { font-size: 10px; fill: #475569; }
+      .component { fill: #dbeafe; stroke: #1d4ed8; stroke-width: 1.8; }
+      .domain { fill: #ede9fe; stroke: #6d28d9; stroke-width: 1.8; }
+      .adapter { fill: #ffedd5; stroke: #c2410c; stroke-width: 1.8; }
+      .storage { fill: #dcfce7; stroke: #15803d; stroke-width: 1.8; }
+      .external { fill: #f1f5f9; stroke: #475569; stroke-width: 1.8; }
+      .boundary { fill: #f8fafc; stroke: #94a3b8; stroke-width: 1.5; stroke-dasharray: 7 5; }
+      .line { stroke: #334155; stroke-width: 1.8; fill: none; marker-end: url(#arrow); }
+      .line-both { stroke: #334155; stroke-width: 1.8; fill: none; marker-start: url(#arrow); marker-end: url(#arrow); }
+      .line-dash { stroke: #64748b; stroke-width: 1.7; stroke-dasharray: 6 4; fill: none; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1380" height="850" fill="#ffffff"/>
+  <text x="35" y="42" class="title">C4 · Nivel 3 — Componentes de inscripción y control de cupos</text>
+  <text x="35" y="66" class="subtitle">Límite del módulo de inscripción dentro de la aplicación PIA · flechas sólidas: llamada/flujo; discontinuas: persistencia o sincronización</text>
+
+  <rect x="35" y="95" width="1310" height="690" rx="14" class="boundary"/>
+  <text x="55" y="125" class="section">Aplicación PIA · Módulo de inscripción</text>
+
+  <rect x="70" y="175" width="205" height="95" rx="9" class="component"/>
+  <text x="172" y="207" text-anchor="middle" class="box-title">API de inscripción</text>
+  <text x="172" y="231" text-anchor="middle" class="body">Autorización · formato</text>
+  <text x="172" y="250" text-anchor="middle" class="body">respuesta de estado</text>
+
+  <rect x="340" y="155" width="250" height="115" rx="9" class="component"/>
+  <text x="465" y="187" text-anchor="middle" class="box-title">Caso de uso de inscripción</text>
+  <text x="465" y="212" text-anchor="middle" class="body">Coordina validaciones, clave</text>
+  <text x="465" y="233" text-anchor="middle" class="body">idempotente y transacción</text>
+  <text x="465" y="252" text-anchor="middle" class="small">Orquesta; no contiene SQL</text>
+
+  <rect x="655" y="150" width="245" height="120" rx="9" class="domain"/>
+  <text x="777" y="183" text-anchor="middle" class="box-title">Validador de reglas</text>
+  <text x="777" y="207" text-anchor="middle" class="body">Prerrequisitos · horario</text>
+  <text x="777" y="229" text-anchor="middle" class="body">fechas y elegibilidad</text>
+  <text x="777" y="251" text-anchor="middle" class="small">No confirma con datos ausentes</text>
+
+  <rect x="655" y="320" width="245" height="120" rx="9" class="domain"/>
+  <text x="777" y="353" text-anchor="middle" class="box-title">Servicio de cupos</text>
+  <text x="777" y="377" text-anchor="middle" class="body">Reserva condicional:</text>
+  <text x="777" y="399" text-anchor="middle" class="body">contador &lt; capacidad</text>
+  <text x="777" y="421" text-anchor="middle" class="small">Solo dentro de transacción</text>
+
+  <rect x="340" y="330" width="250" height="115" rx="9" class="component"/>
+  <text x="465" y="362" text-anchor="middle" class="box-title">Puerto de prerrequisitos</text>
+  <text x="465" y="387" text-anchor="middle" class="body">Contrato del dominio</text>
+  <text x="465" y="409" text-anchor="middle" class="body">timeout / resultado explícito</text>
+
+  <rect x="65" y="340" width="220" height="115" rx="9" class="adapter"/>
+  <text x="175" y="371" text-anchor="middle" class="box-title">Adaptador del legado</text>
+  <text x="175" y="395" text-anchor="middle" class="body">Consulta historial y reglas</text>
+  <text x="175" y="417" text-anchor="middle" class="body">Entrega sincronizaciones</text>
+  <text x="175" y="438" text-anchor="middle" class="small">Protocolo por confirmar</text>
+
+  <rect x="1015" y="145" width="275" height="100" rx="9" class="storage"/>
+  <text x="1152" y="177" text-anchor="middle" class="box-title">Repositorio de inscripción</text>
+  <text x="1152" y="201" text-anchor="middle" class="body">Unicidad estudiante/grupo/período</text>
+  <text x="1152" y="222" text-anchor="middle" class="body">Estado y clave idempotente</text>
+
+  <rect x="1015" y="285" width="275" height="100" rx="9" class="storage"/>
+  <text x="1152" y="317" text-anchor="middle" class="box-title">Auditoría</text>
+  <text x="1152" y="341" text-anchor="middle" class="body">Actor · acción · resultado</text>
+  <text x="1152" y="362" text-anchor="middle" class="body">correlación y fecha/hora</text>
+
+  <rect x="1015" y="425" width="275" height="100" rx="9" class="storage"/>
+  <text x="1152" y="457" text-anchor="middle" class="box-title">Outbox transaccional</text>
+  <text x="1152" y="481" text-anchor="middle" class="body">Eventos pendientes de entrega</text>
+  <text x="1152" y="502" text-anchor="middle" class="body">y estado de reintento</text>
+
+  <rect x="1015" y="590" width="275" height="105" rx="9" class="component"/>
+  <text x="1152" y="622" text-anchor="middle" class="box-title">Trabajador de sincronización</text>
+  <text x="1152" y="646" text-anchor="middle" class="body">Reclama y entrega eventos</text>
+  <text x="1152" y="668" text-anchor="middle" class="body">Reintenta / registra resultado</text>
+
+  <rect x="65" y="575" width="300" height="120" rx="9" class="external"/>
+  <text x="215" y="608" text-anchor="middle" class="box-title">Sistema académico legado</text>
+  <text x="215" y="633" text-anchor="middle" class="body">Autoridad de prerrequisitos</text>
+  <text x="215" y="655" text-anchor="middle" class="body">Destino de sincronización</text>
+  <text x="215" y="678" text-anchor="middle" class="small">Fuera de la transacción local</text>
+
+  <rect x="430" y="575" width="470" height="120" rx="9" class="storage"/>
+  <text x="665" y="608" text-anchor="middle" class="box-title">PostgreSQL · límite ACID local</text>
+  <text x="665" y="633" text-anchor="middle" class="body">Cupo + inscripción + idempotencia + auditoría + evento outbox</text>
+  <text x="665" y="657" text-anchor="middle" class="body">Mismo commit o rollback completo</text>
+  <text x="665" y="678" text-anchor="middle" class="small">Restricciones únicas y actualización condicional</text>
+
+  <path d="M275 220 L340 210" class="line"/>
+  <text x="306" y="194" text-anchor="middle" class="small">1 · solicitud</text>
+  <path d="M590 210 L655 210" class="line"/>
+  <text x="622" y="192" text-anchor="middle" class="small">2 · reglas</text>
+  <path d="M655 240 C620 290 550 325 500 330" class="line"/>
+  <text x="585" y="286" text-anchor="middle" class="small">3 · consulta oficial</text>
+  <path d="M340 390 L285 390" class="line"/>
+  <text x="312" y="375" text-anchor="middle" class="small">4 · protocolo</text>
+  <path d="M175 455 L175 575" class="line-both"/>
+  <text x="185" y="520" class="small">Lectura / sync</text>
+  <path d="M590 235 C630 285 690 310 720 320" class="line"/>
+  <text x="650" y="291" text-anchor="middle" class="small">5 · validación aprobada</text>
+  <path d="M900 365 L1015 190" class="line-dash"/>
+  <text x="955" y="266" text-anchor="middle" class="small">6 · persistir</text>
+  <path d="M900 385 L1015 335" class="line-dash"/>
+  <path d="M900 405 L1015 475" class="line-dash"/>
+  <path d="M1015 640 L900 640" class="line-dash"/>
+  <path d="M1015 610 C960 570 940 510 930 490" class="line"/>
+  <text x="965" y="560" text-anchor="middle" class="small">7 · reclamar evento</text>
+  <path d="M1015 665 C780 760 430 760 300 695" class="line"/>
+  <text x="650" y="746" text-anchor="middle" class="small">8 · entregar al legado; el resultado se concilia y actualiza el estado del evento</text>
+
+  <rect x="65" y="720" width="300" height="38" rx="6" fill="#fff7ed" stroke="#c2410c"/>
+  <text x="215" y="744" text-anchor="middle" class="small">Timeout del legado: no confirmar validación ausente</text>
+</svg>
